@@ -1,4 +1,4 @@
-def twoSum(nums, target):
+def two_sum(nums, target):
     visited = {}
     for i, num in enumerate(nums):
         diff = target - num
