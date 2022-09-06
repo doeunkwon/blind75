@@ -7,3 +7,6 @@ def max_profit(prices):
             high = prices[i]
         profit = max(high - low, profit)
     return profit
+
+# time:   O(n)
+# memory: O(1)

@@ -6,3 +6,6 @@ def two_sum(nums, target):
             return [visited[diff], i]
         else:
             visited[num] = i
+
+# time:   O(n)
+# memory: O(n)
