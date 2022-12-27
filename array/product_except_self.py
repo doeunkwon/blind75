@@ -1,21 +1,25 @@
-def product_except_self(nums):
-    res, right, left, r, l = [], [], [], 1, 1
-    for num in nums:
-        r *= num
-        right.append(r)
-    for num in nums[::-1]:
-        l *= num
-        left.append(l)
-    left = left[::-1]
+'''
+Given an integer array nums, return an array answer such that answer[i] is equal
+to the product of all the elements of nums except nums[i]. The product of any
+prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must
+write an algorithm that runs in O(n) time and without using the division
+operation.
+'''
+
+def productExceptSelf(nums):
+    res = [1] * len(nums)
+    pre, post = 1, 1
     for i in range(len(nums)):
-        if i > 0:
-            if i + 1 == len(nums):
-                res.append(right[i-1])
-            else:
-                res.append(right[i-1] * left[i+1])
-        else:
-            res.append(left[i+1])
+        res[i] = pre
+        pre *= nums[i]
+    for i in range(len(nums)-1, -1, -1):
+        res[i] *= post
+        post *= nums[i]
     return res
 
 # time:   O(n)
 # memory: O(n)
+
+# TEST
+print(productExceptSelf([1,2,3,4])) # [24,12,8,6]
+print(productExceptSelf([-1,1,0,-3,3])) # [0,0,9,0,0]
